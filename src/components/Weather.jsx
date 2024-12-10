@@ -7,8 +7,25 @@ import humidity_icon from "../../src/assets/humidity.png";
 import rain_icon from "../../src/assets/rain.png";
 import snow_icon from "../../src/assets/snow.png";
 import wind_icon from "../../src/assets/wind.png";
+import { useEffect } from "react";
 
 const Weather = () => {
+  const search = async (searchedCity) => {
+    try {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&appid="36549a76634deb127a67a2a87644767a"`;
+
+      const respond = await fetch(url);
+      const data = await respond.json();
+      console.log(data);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  useEffect(() => {
+    search("London");
+  }, []);
+
   return (
     <div className="weather">
       <div className="search-bar">
@@ -17,7 +34,7 @@ const Weather = () => {
       </div>
       <img src={clear_icon} className="weather-icon" alt="" />
       <p className="temper">25C</p>
-      <p className="location">Ho CHi Minh City</p>
+      <p className="location">Ho Chi Minh City</p>
       <div className="weather-data">
         <div className="col">
           <img src={humidity_icon} alt="" />
@@ -37,5 +54,5 @@ const Weather = () => {
     </div>
   );
 };
-// Test commit
+// Dump commit
 export default Weather;
