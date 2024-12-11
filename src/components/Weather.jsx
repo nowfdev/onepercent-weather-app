@@ -9,10 +9,12 @@ import snow_icon from "../../src/assets/snow.png";
 import wind_icon from "../../src/assets/wind.png";
 import { useEffect } from "react";
 
+const key = "36549a76634deb127a67a2a87644767a";
+
 const Weather = () => {
-  const search = async (searchedCity) => {
+  const search = async () => {
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&appid="36549a76634deb127a67a2a87644767a"`;
+      const url = `http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=${key}`;
 
       const respond = await fetch(url);
       const data = await respond.json();
@@ -23,7 +25,7 @@ const Weather = () => {
   };
 
   useEffect(() => {
-    search("London");
+    search();
   }, []);
 
   return (
@@ -55,4 +57,5 @@ const Weather = () => {
   );
 };
 // Dump commit
+// Temp commit :(
 export default Weather;
