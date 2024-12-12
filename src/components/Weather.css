@@ -46,6 +46,11 @@
   line-height: 1;
 }
 
+.feels-like {
+  color: #fff;
+  font-size: 20px;
+}
+
 .location {
   color: #fff;
   font-size: 40px;
